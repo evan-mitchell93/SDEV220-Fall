@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8">
+<bag>
+    <disc>
+        <name>Luna</name>
+        <manu>Discraft</manu>
+        <plastic>Z</plastic>
+    </disc>
+
+    <disc>
+        <name>Escape</name>
+        <manu>Dynamic Discs</manu>
+        <plastic>Supreme</plastic>
+    </disc>
+</bag>
