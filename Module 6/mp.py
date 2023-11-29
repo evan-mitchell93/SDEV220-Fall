@@ -1,19 +1,23 @@
 from multiprocessing import Process
 import time
 
-def my_function1():
-    print("We are doing a thing")
+def f1(*args):
+    print(f"We are doing something {args}")
     time.sleep(2)
     print("We are doing something later")
 
-def my_function2():
+def f2():
     print("No sleep until the end")
     print("Resist the sleep")
-    time.sleep(1)
+    time.sleep(3)
 
 if __name__ == "__main__":
-    process_1 = Process(target=my_function1)
-    process_2 = Process(target=my_function2)
+    process_1 = Process(target=f1,args=("Evan","Bob"))
+    process_2 = Process(target=f2)
+
     process_1.start()
     process_2.start()
-    print("End of main")
+
+    process_1.join()
+    process_2.join()
+    print("End of Main")

@@ -33,6 +33,31 @@ def inventory():
         item_data = {'name':item.name,'expire':f"{item.expire.month} - {item.expire.day} - {item.expire.year}"}
         output.append(item_data)
     return {'items':output}
+
+@app.route('/inventory',methods=["POST"])
+def add_item():
+    item_name = request.json['name']
+    item_date = datetime.strptime(request.json['date'],"%m-%d-%Y")
+
+    new_item = Item(name=item_name,expire=item_date)
+
+    db.session.add(new_item)
+    db.session.commit()
+    return {"New item":new_item.name}
+
+@app.route('/remove')
+def remove_expired():
+    output = []
+    today = datetime.today()
+    expired = Item.query.filter(Item.expire < today)
+    for item in expired:
+       #printing did not work.
+       db.session.delete(item)
+    db.session.commit() 
+    return "Removed expired"
+
+
+
 @app.route('/load',methods=["GET"])
 def load_csv():
     df = pd.read_csv('foods.csv')
