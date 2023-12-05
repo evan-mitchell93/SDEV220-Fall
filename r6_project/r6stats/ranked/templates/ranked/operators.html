@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All Operators</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'ranked.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      {% for op in operators %}
+      <div class="card">
+        <h3>{{op.name}}</h3>
+        <p>{{op.health}}</p>
+        <p>{{op.speed}}</p>
+      </div>
+      {%endfor%}
+    </div>
+  </body>
+</html>

@@ -7,5 +7,7 @@ def index(request):
 
 def about(request):
     ops = Operator.objects.all()
-    ram = ops[0]
-    return HttpResponse(f"Name: {ram.operator_name}, Health: {ram.operator_health}, Speed: {ram.operator_speed}")
+    ops_data = []
+    for op in ops:
+        ops_data.append({"name":op.operator_name,"health":op.operator_health,"speed":op.operator_speed})
+    return render(request,'ranked/operators.html',{'operators':ops_data})
