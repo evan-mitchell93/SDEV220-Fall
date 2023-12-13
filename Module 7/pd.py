@@ -25,6 +25,6 @@ print(myvar.iloc[0])
 
 my_csv = pd.read_csv('discs.csv')
 print(my_csv.head(10))
-my_csv.loc[0,"In Bag"] = "N"
+my_csv.loc[0,"in bag"] = "N"
 print(my_csv.head())
 my_csv.to_csv("discs.csv",index=False)
